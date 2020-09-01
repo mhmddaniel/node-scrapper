@@ -1,0 +1,36 @@
+{
+  "name": "scrapper",
+  "version": "1.0.0",
+  "description": "A webscrapper tools written in Node.js",
+  "main": "index.js",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "cheerio": "^1.0.0-rc.3",
+    "mocha": "^8.1.3",
+    "superagent": "^6.1.0",
+    "webpack": "^4.44.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.12"
+  },
+  "scripts": {
+    "test": "mocha",
+    "watch": "webpack --watch --progress --colors --config webpack.conf.js",
+    "dev": "webpack --progress --colors --config webpack.conf.js",
+    "prod": "NODE_ENV=production webpack -p --config webpack.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhmddaniel/node-scrapper.git"
+  },
+  "keywords": [
+    "scrapper",
+    "node.js"
+  ],
+  "author": "mhmddaniel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mhmddaniel/node-scrapper/issues"
+  },
+  "homepage": "https://github.com/mhmddaniel/node-scrapper#readme"
+}
