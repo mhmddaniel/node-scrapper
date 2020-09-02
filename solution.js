@@ -27,15 +27,22 @@ superagent.getAsync(base_url + '/artikel').then((res) => {
 
             let relatedArticles = [];
 
-            content('ul.panel-items-list').each(function (idx, item) {
-                const related = cheerio.load($(this).html());
-                const new_link = related('a').attr("href");
-                const new_title = related('h5.item-title').text().trim();
-                relatedArticles.push(
-                    {
-                        url: new_link,
-                        title: new_title
+            content('div.side-list-panel').each(function (idx, item) {
+                const list_panel = cheerio.load($(this).html());
+                const panel_header = list_panel('h4').text().trim();
+                if (panel_header == "Artikel Terkait") {
+                    list_panel('li').each(function (index, articles_item) {
+                        const related_article = cheerio.load($(this).html());
+                        const new_link = related_article('a').attr("href");
+                        const new_title = related_article('h5.item-title').text().trim();
+
+                        relatedArticles.push(
+                            {
+                                url: new_link,
+                                title: new_title
+                            });
                     });
+                }
             });
 
             let obj = {
@@ -58,8 +65,4 @@ superagent.getAsync(base_url + '/artikel').then((res) => {
 
         });
     });
-
-    // console.log(JSON.stringify(articles));
-
-
 }).catch(console.error);
